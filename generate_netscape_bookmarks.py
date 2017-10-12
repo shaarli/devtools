@@ -58,9 +58,9 @@ class FakeBookmark():
         return bkm
 
 
-def generate_bookmarks(number):
+def generate_bookmarks(locale, number):
     """Generate a fake Netscape bookmark list"""
-    fake = Faker()
+    fake = Faker(locale)
     bookmarks = [FakeBookmark(fake).netscape_str() for _ in range(number)]
     return '\n'.join([
         HEADER,
@@ -73,6 +73,12 @@ def generate_bookmarks(number):
 def main():
     """Main entrypoint"""
     parser = ArgumentParser()
+    parser.add_argument(
+        '-l',
+        '--locale',
+        default=None,
+        help="Locale for the generated content"
+    )
     parser.add_argument(
         '-n',
         '--number',
@@ -90,7 +96,7 @@ def main():
     args = parser.parse_args()
 
     with open(args.output, 'w') as f_out:
-        f_out.write(generate_bookmarks(args.number))
+        f_out.write(generate_bookmarks(args.locale, args.number))
 
 
 if __name__ == '__main__':
