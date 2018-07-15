@@ -3,6 +3,27 @@ Shaarli devtools
 
 Scripts and utilities to assist Shaarli development, testing and debugging.
 
+Postman
+-------
+
+Resources to test the REST API with the
+`Postman <https://www.getpostman.com/>`_ HTTP development environment.
+
+* ``Shaarli-API-v1.postman_collection.json`` contains a collection of HTTP
+  requests corresponding to the endpoints of the REST API v1
+* ``Shaarli-Template.postman_environment.json`` is an example environment
+  that should be duplicated to define instance-specific variables (URL, API
+  secrets, etc.)
+
+The API collection comes with a pre-request script to generate a valid JSON Web
+Token.
+
+Use it when:
+
+* you want a straightforward tool to interact with the REST API
+* you want to test API endpoints
+* you want to add new API endpoints
+
 generate_netscape_bookmarks.py
 ------------------------------
 
