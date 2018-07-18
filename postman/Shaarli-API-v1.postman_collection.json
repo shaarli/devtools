@@ -1,0 +1,527 @@
+{
+  "info": {
+    "_postman_id": "5224a6b4-769a-4482-bcd8-8d75c14a6e09",
+    "name": "Shaarli API v1",
+    "description": "# Shaarli API v1 - Postman Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Links",
+      "description": "",
+      "item": [
+        {
+          "name": "List all links",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{shaarli_api_url}}/info",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "info"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create a link",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "url",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "title",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "tags",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "private",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{shaarli_api_url}}/links",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "links"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Link details",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4b2feb5a-0e19-4426-812c-70a4f46eb036",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.variables.set('link_id', 0);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{shaarli_api_url}}/links/{{link_id}}",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "links",
+                "{{link_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update link",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "245e447e-aeb5-4acd-933d-c3bc89252b1f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.variables.set('link_id', 0);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "url",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "title",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "tags",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "private",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{shaarli_api_url}}/links/{{link_id}}",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "links",
+                "{{link_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete link",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "49d21131-acaf-40de-8109-63953f8fe67a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.variables.set('link_id', 0);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{shaarli_api_url}}/links/{{link_id}}",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "links",
+                "{{link_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "History",
+      "description": "",
+      "item": [
+        {
+          "name": "List user actions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{shaarli_api_url}}/history?",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "since",
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": null,
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tags",
+      "description": "",
+      "item": [
+        {
+          "name": "List all tags",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{shaarli_api_url}}/tags?offset&limit=&visibility",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "tags"
+              ],
+              "query": [
+                {
+                  "key": "offset",
+                  "value": null
+                },
+                {
+                  "key": "limit",
+                  "value": ""
+                },
+                {
+                  "key": "visibility",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Tag details",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ddbf9b3a-23ad-49fb-8605-87a18c19916b",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.variables.set('tag_name', 'shaarli');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{shaarli_api_url}}/tags/{{tag_name}}",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "tags",
+                "{{tag_name}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Rename tag",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "8ef19650-975a-47bf-9f34-5cd6f34a55a5",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.variables.set('tag_name', 'shaarli');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{shaarli_api_url}}/tags/{{tag_name}}",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "tags",
+                "{{tag_name}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete tag",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "407c8ed2-60e5-4bbd-81b0-6d86ba0516d4",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.variables.set('tag_name', 'deltest');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{shaarli_api_url}}/tags/{{tag_name}}",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "tags",
+                "{{tag_name}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Info",
+      "description": "",
+      "item": [
+        {
+          "name": "Instance information",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{shaarli_api_url}}/info",
+              "host": [
+                "{{shaarli_api_url}}"
+              ],
+              "path": [
+                "info"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{jwt_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "eb081f70-4885-4729-9bdc-a67c8fdb3958",
+        "type": "text/javascript",
+        "exec": [
+          "/**",
+          " * Shaarli REST API - JSON Web Token (JWT) Authentication Postman script",
+          " * ",
+          " * See:",
+          " * - https://developer.dansksupermarked.dk/v1/api/guides/jwt-authentication-in-postman/",
+          " * - https://gist.github.com/corbanb/db03150abbe899285d6a86cc480f674d",
+          " * - https://www.jonathan-petitcolas.com/2014/11/27/creating-json-web-token-in-javascript.html",
+          " * - https://github.com/brix/crypto-js",
+          " */",
+          "",
+          "/**",
+          " * Encode a raw string to URL-safe Base64",
+          " */",
+          "function base64url(source) {",
+            "\tvar encodedSource = CryptoJS.enc.Base64.stringify(source);",
+            "",
+            "\t// Remove padding equal characters",
+            "\tencodedSource = encodedSource.replace(/=+$/, '');",
+            "",
+            "\t// Replace characters according to base64url specifications",
+            "\tencodedSource = encodedSource.replace(/\\+/g, '-');",
+            "\tencodedSource = encodedSource.replace(/\\//g, '_');",
+            "",
+            "\treturn encodedSource;",
+            "}",
+            "",
+            "/**",
+            " * Encode a JSON object to URL-safe Base64",
+            " */",
+            "function base64object(object) {",
+              "    return base64url(CryptoJS.enc.Utf8.parse(JSON.stringify(object)));",
+              "}",
+              "",
+              "var headers = base64object({",
+                "\t\"typ\": \"JWT\",",
+                "\t\"alg\": \"HS512\",",
+                "});",
+                "",
+                "var payload = base64object({",
+                  "    \"iat\": Math.floor(Date.now() / 1000),",
+                  "});",
+                  "",
+                  "var token = headers + \".\" + payload;",
+                  "var signature = base64url(CryptoJS.HmacSHA512(token, pm.environment.get('shaarli_api_secret')));",
+                  "var jwtToken = token + \".\" + signature;",
+                  "",
+                  "pm.variables.set(\"jwt_token\", jwtToken);"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "4867c9c8-06a7-473c-870a-4c791c2f9c3e",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "d41bd996-8fff-4ddd-a487-d35828b00350",
+      "key": "shaarli_api_url",
+      "value": "{{shaarli_url}}/api/v1",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}
